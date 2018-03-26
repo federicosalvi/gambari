@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<title>GAMBARABITO</title>
+<link rel="shortcut icon" href="icon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+    background-image: url('forestbridge.jpg');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.speech-bubble {
+	position: relative;
+	background: #ffffff;
+	color: black;
+	border-radius: .4em;
+	padding: 10px;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: #ffffff;
+	border-left: 0;
+	border-top: 0;
+	margin-top: -10px;
+	margin-left: -20px;
+}
+.bubble-container {
+    position: absolute;
+    left: 175px;
+    top: 50px;
+}
+</style>
+<body>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-middle">
+<!--    <h1 class="w3-jumbo w3-animate-top">COMING SOON</h1>
+    <hr class="w3-border-grey" style="margin:auto;width:40%">
+    <p class="w3-large w3-center">35 days left</p> -->
+    <img src="gambari.png" class="w3-image">
+	<div class="bubble-container"><hgroup class="speech-bubble">
+	</hgroup></div>
+    <button type="submit">Tell me something else</button>
+  </div>
+  <div class="w3-display-bottomleft w3-padding-large">
+    Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
+  </div>
+</div>
+
+</body>
+<script>
+var text = `Leva la cera togli la cera
+Si avvicina lo specchio dei rigori
+I cani fiutano il senso della paura
+'Ammunito'
+Sono le dodici e cinquanta, dodici e sessanta
+'Cerbiattolo'
+Ho una reputazione di me stesso enorme
+Mi hai tolto veramente un sorriso
+Sono veramente galbanizzato
+Se lo fa Fede, ha anche la proprietà di prenderlo
+Ce l'hai te il manico dalla parte del coltello
+Laureato in parrucchieria 
+Quando parli di Olianas sciacquati la lingua
+Guadagnati con la fronte del sudore
+Lo plagio a mia immagine e somiglianza
+Wolvering
+Non capisco se cel'hai contro di me
+Si sente a occhio nudo
+Ho perso l'età
+Il barista sta cercando di somatizzare i costi
+La vendetta è un piatto che va assaporato freddo
+Sono un'inciclopedia vivente
+Alle tue malefatte rispondo con l'altra guancia
+Io c'ho una memoria elvetica
+Hai la mia totale concentrazione
+Sono già temperato
+Bello, alto, e col muscoloso
+Hai raschiato il fondo del porcellino
+'Italiacani'
+Non usano il preservativo per una cosa di dio [...] hanno le loro chiese
+Devi avere una grande autostima in te stesso
+Mi deprimererei
+Non menare al can che abbaia
+Io sono intimo con la mia sessualità
+il sette giuglio
+mi stavo prudendo
+non mi scappa neanche una mosca
+siete motorizzati? no siamo macchinati (serio)
+conan il supermercato
+mangi troppo brodo la sera
+ma è normale che devo essere qui rilegato sulla sedia?
+io ce l'ho ancora il termometro col mercurio cromo
+calcerogeno`
+
+var arr = text.split('\n')
+var ctx, canvas
+function newLine(){
+  line = arr[Math.round(((arr.length-1)*Math.random()))]
+  $('.speech-bubble').html("<h3>"+line+"</h3>")
+}
+$('img').load(function() {
+    newLine()
+  $('button').click(newLine)
+});
+
+
+</script>
+
+</html>
+
