@@ -4,6 +4,11 @@
 <link rel="shortcut icon" href="icon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:url"           content="http://gambari.tk/" />
+<meta property="og:type"          content="website" />
+<meta property="og:title"         content="Gambari" />
+<meta property="og:description"   content="Ipse Dixit Generator" />
+<meta property="og:image"         content="http://gambari.tk/icon.png" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -45,7 +50,15 @@ body, html {height: 100%}
 }
 </style>
 <body>
-
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
   <div class="w3-display-middle">
 <!--    <h1 class="w3-jumbo w3-animate-top">COMING SOON</h1>
@@ -55,14 +68,27 @@ body, html {height: 100%}
 	<div class="bubble-container"><hgroup class="speech-bubble">
 	</hgroup></div>
     <button type="submit">Tell me something else</button>
-  </div>
-  <div class="w3-display-bottomleft w3-padding-large">
-    Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
+    <div class="fb-share-button" data-href="http://gambari.tk" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fgambari.tk%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
   </div>
 </div>
 
 </body>
 <script>
+function randperm(maxValue){
+    // first generate number sequence
+    var permArray = new Array(maxValue);
+    for(var i = 0; i < maxValue; i++){
+        permArray[i] = i;
+    }
+    // draw out of the number sequence
+    for (var i = (maxValue - 1); i >= 0; --i){
+        var randPos = Math.floor(i * Math.random());
+        var tmpStore = permArray[i];
+        permArray[i] = permArray[randPos];
+        permArray[randPos] = tmpStore;
+    }
+    return permArray;
+}
 var text = `Leva la cera togli la cera
 Si avvicina lo specchio dei rigori
 I cani fiutano il senso della paura
@@ -74,7 +100,7 @@ Mi hai tolto veramente un sorriso
 Sono veramente galbanizzato
 Se lo fa Fede, ha anche la proprietà di prenderlo
 Ce l'hai te il manico dalla parte del coltello
-Laureato in parrucchieria 
+Laureato in parrucchieria
 Quando parli di Olianas sciacquati la lingua
 Guadagnati con la fronte del sudore
 Lo plagio a mia immagine e somiglianza
@@ -109,12 +135,14 @@ calcerogeno`
 
 var arr = text.split('\n')
 var ctx, canvas
+var i = 0
+var perm = randperm(arr.length)
 function newLine(){
-  line = arr[Math.round(((arr.length-1)*Math.random()))]
+  line = arr[perm[++i%arr.length]]
   $('.speech-bubble').html("<h3>"+line+"</h3>")
 }
 $('img').load(function() {
-    newLine()
+  newLine()
   $('button').click(newLine)
 });
 
@@ -122,4 +150,3 @@ $('img').load(function() {
 </script>
 
 </html>
-
