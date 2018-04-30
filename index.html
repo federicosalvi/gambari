@@ -74,6 +74,11 @@ body, html {height: 100%}
 
 </body>
 <script>
+if (!window.location.href.startsWith("https://federicosalvi.github.io/gambari/"))
+{
+  window.location.href = "https://federicosalvi.github.io/gambari/"
+}
+
 function randperm(maxValue){
     // first generate number sequence
     var permArray = new Array(maxValue);
